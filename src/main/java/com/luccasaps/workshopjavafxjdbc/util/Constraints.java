@@ -1,4 +1,4 @@
-package util;
+package com.luccasaps.workshopjavafxjdbc.util;
 
 import javafx.scene.control.TextField;
 

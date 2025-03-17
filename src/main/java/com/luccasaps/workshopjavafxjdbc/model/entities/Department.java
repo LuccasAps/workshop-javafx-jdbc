@@ -1,4 +1,4 @@
-package model.entities;
+package com.luccasaps.workshopjavafxjdbc.model.entities;
 
 import java.io.Serializable;
 
