@@ -3,6 +3,7 @@ package com.luccasaps.workshopjavafxjdbc;
 import com.luccasaps.workshopjavafxjdbc.db.DbIntregityException;
 import com.luccasaps.workshopjavafxjdbc.gui.listners.DataChangeListener;
 import com.luccasaps.workshopjavafxjdbc.model.entities.Seller;
+import com.luccasaps.workshopjavafxjdbc.model.services.DepartmentService;
 import com.luccasaps.workshopjavafxjdbc.model.services.SellerService;
 import com.luccasaps.workshopjavafxjdbc.util.Alerts;
 import com.luccasaps.workshopjavafxjdbc.util.Utils;
@@ -107,7 +108,8 @@ public class SellerListController implements Initializable, DataChangeListener {
 
             SellerFormController controller = loader.getController();
             controller.setSeller(obj);
-            controller.setSellerService(new SellerService());
+            controller.setServices(new SellerService(), new DepartmentService());
+            controller.loadAssociatedObjects();
             controller.subscribeDataChangeListener(this);
             controller.updateFormData();
 
@@ -120,6 +122,7 @@ public class SellerListController implements Initializable, DataChangeListener {
             dialogStage.showAndWait();
 
         }catch (IOException e){
+            e.printStackTrace();
             Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
     }
